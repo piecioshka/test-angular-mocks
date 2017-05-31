@@ -15,6 +15,9 @@ export class AppComponent {
   title = 'app works!';
 
   constructor(private dataService: DataService) {
-    this.dataService.fetch();
+    this.dataService.fetch('/')
+      .subscribe((response) => {
+        console.log(response);
+      });
   }
 }

@@ -4,10 +4,11 @@ import { RestService } from './rest.service';
 @Injectable()
 export class DataService {
 
-  constructor(private restService: RestService) { }
+  constructor(private restService: RestService) {
+  }
 
-  fetch() {
-    console.log(this.restService);
+  fetch(url: string) {
+    return this.restService.makeRequest(url);
   }
 
 }

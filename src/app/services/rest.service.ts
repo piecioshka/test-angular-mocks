@@ -11,6 +11,9 @@ export class RestService {
 
   makeRequest(url: string): Observable<Response> {
     return this.http.get(url)
+      .map((res) => {
+        return res.json();
+      })
       .catch((err) => {
         console.error('Request to "%s" failed', url);
         return Observable.throw(err);

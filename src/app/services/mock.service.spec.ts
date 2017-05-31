@@ -1,21 +1,19 @@
 import { TestBed, inject } from '@angular/core/testing';
 import { HttpModule } from '@angular/http';
 
-import { DataService } from './data.service';
-import { RestService } from './rest.service';
 import { MockService } from './mock.service';
 
-describe('DataService', () => {
+describe('MockService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [
         HttpModule
       ],
-      providers: [DataService, RestService, MockService]
+      providers: [MockService]
     });
   });
 
-  it('should ...', inject([DataService], (service: DataService) => {
+  it('should ...', inject([MockService], (service: MockService) => {
     expect(service).toBeTruthy();
   }));
 });

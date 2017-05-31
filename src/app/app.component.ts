@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Response } from '@angular/http';
 import { DataService } from './services/data.service';
 import { RestService } from './services/rest.service';
+import { MockService } from './services/mock.service';
 
 interface GitHubProfileResponse extends Response {
   avatar_url: string;
@@ -14,14 +15,18 @@ interface GitHubProfileResponse extends Response {
   styleUrls: ['./app.component.css'],
   providers: [
     DataService,
+    MockService,
     RestService
   ]
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = '';
   avatar_url = '';
 
   constructor(private dataService: DataService) {
+  }
+
+  ngOnInit() {
     this.dataService.fetch('https://api.github.com/users/piecioshka')
       .subscribe((response: GitHubProfileResponse): void => {
         this.title = response.name;
